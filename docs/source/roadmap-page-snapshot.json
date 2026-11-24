@@ -1,0 +1,382 @@
+{
+  "metadata": {
+    "page_id": "page_bf94c62c3c64819182ff675453efa595",
+    "layout": "document",
+    "symbol": null,
+    "title": "MVP Implementation Roadmap",
+    "preview": "**Engineering execution baseline · 24 November 2026 · Revision 0.1**\n\nSource: KERobot_Welding_Platform_Architecture.md (23 November 2026), especially §§ 3–12 and 15; recent autonomous welding product requirements (CAD-driven programming, sc",
+    "creator_account_user_id": "user-8XGIrJi3L0wP3K7gabQJ2dhw",
+    "owner_workspace_id": null,
+    "parent": {
+      "page_id": "page_6b059364c6e88191b2f78698b18d8747",
+      "title": "KERobot Development"
+    },
+    "drive_scope": "space",
+    "drive_space_id": "page_space_2b109d07a17c8191b6be3042e20b7049",
+    "library_container_id": "fde3_cGFnZV9iZjk0YzYyYzNjNjQ4MTkxODJmZjY3NTQ1M2VmYTU5NQ_f9c545b935e08191bb3aa9fe63cd4c18",
+    "file_upload_page_id": "page_bf94c62c3c64819182ff675453efa595",
+    "position": 1392877974515712,
+    "created_at": "2026-11-24T13:40:03.356064Z",
+    "updated_at": "2026-11-24T13:40:04.208593Z",
+    "deleted_at": null,
+    "current_sequence": 0,
+    "projection_through_sequence": 0,
+    "access": {
+      "can_read": true,
+      "can_comment": true,
+      "can_write": true,
+      "can_share": true,
+      "can_delete": true,
+      "sources": [
+        "library"
+      ]
+    },
+    "url": "https://chatgpt.com/space/page_bf94c62c3c64819182ff675453efa595"
+  },
+  "content": {
+    "schema_version": 2,
+    "symbol": null,
+    "title": "MVP Implementation Roadmap",
+    "title_hash": "e4441eba4b1d580171015143a225d79a583659e479396e7aecdff759206bb3bc",
+    "blocks": [
+      {
+        "id": "294c7de3-ca6b-4bb3-a2a6-4752b80089d2",
+        "kind": "markdown",
+        "markdown": "**Engineering execution baseline · 24 November 2026 · Revision 0.1**",
+        "hash": "c1bc8888eae706dd74f797cb54ee2675d6182e5cd40079136405fb0371ab84cb",
+        "metadata": {}
+      },
+      {
+        "id": "f763a766-07e5-40c4-bce0-04422d83f699",
+        "kind": "markdown",
+        "markdown": "Source: KERobot_Welding_Platform_Architecture.md (23 November 2026), especially §§ 3–12 and 15; recent autonomous welding product requirements (CAD-driven programming, scanning, digital twin, cross-platform desktop and multi-vendor ambition). This page translates the proposed baseline into actionable work, not a certification or a report of existing software.",
+        "hash": "3165e1d80500ae9ae276eb540b9fd92bd3264b9f2d426db8ddbf09e3c4679c8f",
+        "metadata": {}
+      },
+      {
+        "id": "61dc920a-346a-44c9-9106-24c3ae0f7044",
+        "kind": "markdown",
+        "markdown": "## 1. Scope and status",
+        "hash": "756b78f13c94cd703b566a8e9a4b5b881366f91c1510cb70f8d9f9ec94887f15",
+        "metadata": {}
+      },
+      {
+        "id": "82ac57e0-2fc3-49ac-baed-d61f9cc096d9",
+        "kind": "markdown",
+        "markdown": "**MVP target:** one guarded ABB IRB 4600-20/2.50 / IRC5 / Güdel track / Lincoln Power Wave R450 cell; track parked at a verified station; one fixture family, straight single-pass T-fillet, one approved WPS, fixed arc-off scanner. Operator confirms weld intent, reviews and approves exact native artifact; authorized local operator starts at commissioned controls. Simulation-first milestone uses recorded or synthetic data and mock devices, with no live motion.",
+        "hash": "91b6af4584f7ea3995a8b42009623f889d467d10f3568a968fe685f7b8453219",
+        "metadata": {}
+      },
+      {
+        "id": "b2f73a0f-7ab3-452c-b783-65d385a070ba",
+        "kind": "markdown",
+        "markdown": "| Capability | Proposed MVP | Evidence status today |\n|---|---|---|\n| STEP / joint selection | Exact B-rep assembly, candidate T-joints and human confirmation | Proposed; no code/test evidence supplied |\n| Path / WPS | Single stringer, signed work/travel angles, approved machine mapping | Proposed; no KERobot validation |\n| Vision | Replay then fixed pre-weld scan, bounded correction | Proposed; sensor unselected |\n| Simulation | Generic twin plus exact native verification | Proposed; matching tooling unverified |\n| Controller | RAPID export, controlled staging, local start, monitoring | Candidate hardware; integration unverified |\n| Multi-brand, arc-on tracking, coordinated rail, multi-pass, curves | Separate future qualifications | Deferred / disabled |",
+        "hash": "d332439bd4edefb545c3b11a79128a10088dce788dbb7e8d79e175695acd5226",
+        "metadata": {}
+      },
+      {
+        "id": "d1c3bfe8-f80a-4bae-95af-20c24a70fff9",
+        "kind": "markdown",
+        "markdown": "**Status policy:** Proposed → Implemented (merged code + build) → Tested offline (test report + revision) → Native verified (matching vendor tool + artifact hash) → HIL verified (actual hardware witness) → Site accepted / released (signed limits). A feature is never promoted merely because a design exists. Existing physical equipment or previous standalone welding trials do not prove KERobot functionality. All milestone boxes start unchecked.",
+        "hash": "2d269b8302aa5aab5d5980bc76692623c3b9faa6e9b9e709ed5c3dced53a9f74",
+        "metadata": {}
+      },
+      {
+        "id": "193fa335-f51c-482d-b75f-c925a4ad1e62",
+        "kind": "markdown",
+        "markdown": "## 2. Architecture and technology decisions",
+        "hash": "d47b286f2a764ee0fc50b3c04002ba14f5c6afcd0e7f4c6e28983f9017e54a9b",
+        "metadata": {}
+      },
+      {
+        "id": "fc5f2c62-4187-4f6a-87b6-1f183c27f449",
+        "kind": "markdown",
+        "markdown": "| Module | Recommended stack | Windows x64 | macOS Apple silicon |\n|---|---|---|---|\n| Desktop / viewport | Qt 6 Widgets, C++, OCCT AIS | Native | Native |\n| CAD worker | OCCT XDE/STEP, CMake | Native | Native |\n| Planning / twin | Eigen, validated IK, FCL; OMPL later if needed | Native | Native |\n| Vision replay | Open3D C++ CPU, native captures + portable point clouds | Native | Native |\n| Edge orchestration | Supported .NET LTS, Protobuf/gRPC, HTTPS artifacts, SQLite | Pilot industrial service | Client/mock only for MVP |\n| Vendor verification | RobotStudio + matching RobotWare VC | Supported Windows host, license dependent | Review evidence remotely |\n| Controller / scanner | Isolated ABB PC SDK bridge if option supported; vendor scanner SDK | Windows edge subject to exact SDK matrix | No direct vendor SDK assumption |\n| Packaging | CMake pinned dependencies, signed MSI, notarized app, SBOM | CI + clean install | CI + clean install |",
+        "hash": "7f989c58c5008b9a88b960a2e9c6f03bcffce886d355cde2b98afae69f68e15e",
+        "metadata": {}
+      },
+      {
+        "id": "2f388a99-67f4-4e46-a888-bf57a06ae9d1",
+        "kind": "markdown",
+        "markdown": "Use STEP AP242 preferentially, AP214/AP203 only as demonstrated. IGES repair later; STL/OBJ obstacles, glTF previews, never mesh-derived weld intent without qualification. Choose geometric algorithms before ML. Confirm redistribution rights, OS/SDK support and versions in spikes, not by assumption. No cloud or desktop process in safety or servo timing. Offline job authoring allowed; authoritative release belongs to cell edge.",
+        "hash": "0f963cfd43d5e523d735834817436887fcfd874b638d180556536b81aa1eff32",
+        "metadata": {}
+      },
+      {
+        "id": "a4b93aaa-2345-478e-9a61-83a781e771c4",
+        "kind": "markdown",
+        "markdown": "## 3. Dependency graph and contracts",
+        "hash": "05d39803f3d8b4516dba81920bd78520bcbbe1bcaae08db26820bc349602eb0f",
+        "metadata": {}
+      },
+      {
+        "id": "8b420ce2-2e71-4a15-a1ae-1351c32ac325",
+        "kind": "markdown",
+        "markdown": "```text\nP0 Contracts / cell discovery\n  ├─ P1 CAD import → P2 joint intent ─┐\n  ├─ P3 WPS / machine mapping ───────┼→ P4 nominal plan\n  ├─ P5 vision replay / calibration ─┘       ↓\n  └─ Cell model / mock adapter ──→ corrected plan → P6 twin + native verification\n                                             ↓\n                                   P7 staging / hardware pilot\n                                             ↓\n                                   P8 site release / hardening\n```",
+        "hash": "977d12a61f32827163ce4e73581338889c093a29fabc6c3d3cc5c198250a1b5c",
+        "metadata": {}
+      },
+      {
+        "id": "79657107-8984-44a6-bb54-48f1e5e6a58b",
+        "kind": "markdown",
+        "markdown": "P5 can develop in parallel against frozen schemas; P6 generic twin can start with nominal paths; real acquisition and live interfaces wait for approved hardware access. Cross-platform UI and edge storage evolve throughout.",
+        "hash": "ac52431f95864a2d4515e8466e833a40ae6dfc47ed5a25f081a3b66fd03f37d4",
+        "metadata": {}
+      },
+      {
+        "id": "794b6219-a865-4eea-90f2-2a4e37ad347c",
+        "kind": "markdown",
+        "markdown": "Core contracts: PartRevision → GeometryArtifact → JointIntent; WPSRevision + MachineScheduleMap; CellRevision + FrameGraph + CalibrationRevision; CaptureSet → Registration → CorrectionProfile; PlanRevision → ProgramArtifact → VerificationReport → ReleaseManifest; Job → RunAttempt → SegmentEvent → WeldRecord → Inspection. SI internally; explicit shop units at boundaries; right-handed quaternion [x,y,z,w], T_A_B maps B to A; distinguish flange/TCP, linear/rotary rail, WFS/travel speed. Immutable hashes, revision IDs, typed errors, capability manifests, idempotency keys, durable events and one edge execution lease. Any relevant setup change invalidates release.",
+        "hash": "070913f857d098f981b086bc64c50bf69137967506dea4407a91c99e17b67b6c",
+        "metadata": {}
+      },
+      {
+        "id": "c0dbf8e2-a24d-4b9c-9e4e-1bda57113e8d",
+        "kind": "markdown",
+        "markdown": "## 4. Practical implementation phases",
+        "hash": "5908ffecd8465bd028f02b9bd28449f0dc24c1c3fa1e7ffe29266611e35a2b08",
+        "metadata": {}
+      },
+      {
+        "id": "e43535b0-d54b-4400-a77f-2bb79a6992fc",
+        "kind": "markdown",
+        "markdown": "| Phase / owner | Build deliverables | Acceptance and evidence |\n|---|---|---|\n| P0 Discovery / lead, controls, quality | Nominate part, WPS, reference RAPID, fixture survey, controller options, risk register, frozen v1 contracts, baseline pendant timings | Signed intended use, test plan and tolerance owners; unknowns recorded, hardware blocked |\n| P1 STEP / CAD lead | Isolated importer with limits, XDE occurrences, units, transforms, B-rep, display tessellation, picking, SHA-256 | Golden assembly dimensions and occurrences match drawings on both OSs; corrupt/oversize/ambiguous units fail or require review; mirrored instances correct |\n| P2 Joint detection / geometry lead | Face adjacency/proximity, planar T-fillet candidates, endpoints, side/direction, trim/reject, revision-scoped identity | Compare to independently annotated joints; no contact-only automatic weld intent; mirrored, gapped, ambiguous and revised parts require confirmation |\n| P3 WPS / welding authority + backend | Immutable draft/released/withdrawn WPS, qualification reference, material/thickness/position limits, process phases, explicit units, cell-specific schedule mapping | Out-of-range values and unsupported source modes rejected; unapproved/withdrawn WPS blocks release; WFS and travel speed never conflated; real map requires witness |\n| P4 Path / robotics lead | Seam frame, direction-aware work/travel angles, CTWD, approach/weld/retract/transfers, sequence, continuous IK, limit/singularity checks | Analytic golden endpoints and orientation for both sides; continuous valid branch and bounded clearance; unreachable or singular path rejected; no fixed 45° override of WPS |\n| P5 Vision / metrology lead | Replay first; datum-seeded registration, face/seam fit, endpoints, uncertainty, coverage, clamps; fixed scanner acquisition after selection | Held-out metrology; approved error budget; symmetry, occlusion, drift, out-of-range fit-up and unknown clearance fail closed; corrected path regenerated and revalidated |\n| P6 Simulation / robotics + independent QA | Measured robot/tool/fixture/track twin, swept clearance, native RAPID exporter from known-good routine, RobotStudio verification | Exact artifact checks for frames, configs, speed, blends, arc phases and external group; native discrepancies within signed tolerances; generic preview not sufficient |\n| P7 Controller pilot / controls + integrator | Capability manifest, mock then isolated Windows bridge or witnessed manual transfer, stage/readback, local start, source feedback, run history | HIL and fault matrix pass, no accidental start or blind restart; arc-inhibited motion then supervised coupons; actual source schedule verified |\n| P8 Hardening / QA, OT, site | Signed installs, auth, audit, backup/restore, offline operation, monitoring, training, FAT/SAT and shift trials | Signed SAT, coupon/first article quality, restore/rollback rehearsal, documented support and production limits |",
+        "hash": "e56bc2fb535fb392a7871d592465985db4233b3b66172ba24bd26260bb12feb7",
+        "metadata": {}
+      },
+      {
+        "id": "bd918c46-6cb4-4fc9-9a00-8461df2af290",
+        "kind": "markdown",
+        "markdown": "Each phase exits by evidence rather than date. Numeric tolerances (CAD error, seam error, coverage, clearance, timing and quality) must be predeclared by the appropriate authority using representative parts and metrology; unset limits disable physical release. Measure manual vs assisted programming time, first-article acceptance, reject rate and intervention count.",
+        "hash": "aa1647224b28babdab37c74c59c2d4b06b42d4f665e5951046ef51ad0abf77a8",
+        "metadata": {}
+      },
+      {
+        "id": "47263eea-f1a3-4def-9e96-99aecaf6d5c5",
+        "kind": "markdown",
+        "markdown": "## 5. Proposed monorepo layout",
+        "hash": "12abdc30b637d26d460754db282e76bb5159ba742ce84d754363c02f8d4f9f23",
+        "metadata": {}
+      },
+      {
+        "id": "60ab0321-95da-4d96-9310-2597f2a292eb",
+        "kind": "markdown",
+        "markdown": "```text\nkerobot/\n  apps/desktop/                 # Qt shell, viewport, review\n  libs/contracts/               # proto, schemas, generated bindings\n  libs/geometry/                # frames, units, B-rep helpers\n  workers/cad/                  # STEP import and joint candidates\n  workers/planner/              # seam poses, IK, trajectory\n  workers/vision/               # replay, registration, corrections\n  libs/simulation/              # collision, clearance, twin\n  services/edge/                # .NET jobs, releases, events, auth\n  adapters/mock/                # offline device contracts\n  adapters/abb/                 # RAPID post and isolated SDK bridge\n  adapters/scanner/             # vendor acquisition boundary\n  cell_profiles/pilot-01/       # sanitized versioned cell configuration\n  tests/{unit,contract,golden,replay,native,hil,sat}/\n  fixtures/{cad,scans,wps,expected}/\n  docs/{adr,requirements,safety,commissioning}/\n  packaging/{windows,macos}/\n  .github/workflows/            # native CI, license/SBOM checks\n  CMakeLists.txt\n  CMakePresets.json\n```",
+        "hash": "2d9120ef4e190d4cfc0463dcfd42267945af0211b3e92111749feaf3b689462e",
+        "metadata": {}
+      },
+      {
+        "id": "8cd15434-a315-4022-a6a1-074843fa9a8f",
+        "kind": "markdown",
+        "markdown": "Human technical lead owns integration and shared contracts; CODEOWNERS per module. No live cell credentials in repository or agent access. Keep proprietary binaries and sensitive backups in approved storage; reference hashes. Independent QA owns golden expected outputs; schema and fixture changes require consumer review. Use small PRs, reproducible dependency locks, native CI and artifact manifests.",
+        "hash": "f62aa4f3d765731a5ef9dbe1f2d5519548f403cd46644abcd8e2f942920321e0",
+        "metadata": {}
+      },
+      {
+        "id": "2cd53e51-d1f2-4baf-b7bc-869a0468397d",
+        "kind": "markdown",
+        "markdown": "## 6. First development sprint — 10 working days (proposed)",
+        "hash": "fcd27041dd5ec7854a3d91564ebba473dc0fb4fe914a734b96cc8f2ad7d5ad74",
+        "metadata": {}
+      },
+      {
+        "id": "75e13890-2c14-4fa1-b57d-4ab8f0092546",
+        "kind": "markdown",
+        "markdown": "**Sprint objective:** a runnable Windows/macOS offline foundation: import one T-joint STEP assembly, pick faces, confirm seam and show a nominal line; attach a clearly labeled test WPS and persist a JOBID. No real scanner, native arc execution or production claim. This combines contract-first discovery with a small vertical slice; full architecture first-30-day demo remains a later target.",
+        "hash": "37a6e266c33e41cdfc2ff2c4aa6675477a8bb06f4e2924ec20a9cfc53ec2c2fe",
+        "metadata": {}
+      },
+      {
+        "id": "6d23ce54-ebdd-48ff-a32d-284728c9578d",
+        "kind": "markdown",
+        "markdown": "| ID / days | Task and accountable role | Deliverable / acceptance |\n|---|---|---|\n| S1-01 / 1–2 | Lead + controls + welding | Collect sanitized CAD/drawing, reference RAPID, WPS evidence, controller options and fixture information; record blockers |\n| S1-02 / 1–3 | Lead + QA | ADRs for Qt/OCCT, units/frames, seam identity and job states; v1 schemas and analytic fixture oracle |\n| S1-03 / 2–4 | Build + desktop | CMake presets, Qt shell, CI on Windows x64 and Apple silicon; reproducible clean build |\n| S1-04 / 3–6 | CAD | Import XDE assembly, show tree and viewport, select faces; drawing dimension and transforms verified |\n| S1-05 / 5–8 | Geometry + planner | Straight T-joint candidate, manual side/direction confirmation, nominal line preview; left/right golden tests |\n| S1-06 / 5–8 | Backend + welding | Test-only WPS schema, unit validation, mock adapter and persisted job draft; unsupported values rejected |\n| S1-07 / 9–10 | QA + lead | Both OS demo, corrupt/units/mirror negative cases, report hashes and open issues; no release eligibility |",
+        "hash": "8b4250fedb689af6ee52d76a5349a265cccd5f1c06065baceebbc301f073c58e",
+        "metadata": {}
+      },
+      {
+        "id": "62a03372-e8fc-4676-94cb-1d3d8003b7bc",
+        "kind": "markdown",
+        "markdown": "Definition of done: reviewed PRs, clean native builds, reproducible test fixtures, independent expected results, documented limitations, demo and evidence links. If a real approved WPS or representative CAD is unavailable, use explicitly synthetic fixtures and keep industrial validation blocked. No task marked done based on generated code alone.",
+        "hash": "98ac3c69a82de397b714d69fa627d8c57804ff76ee5386820254d6355c35c067",
+        "metadata": {}
+      },
+      {
+        "id": "688c7b52-b821-4eba-b646-9ad4e483b0fe",
+        "kind": "markdown",
+        "markdown": "## 7. Industrial safety and release gates",
+        "hash": "a9b414618e3b724adf814225bbbd4940834083f3f388b2f7faf6f364ee052855",
+        "metadata": {}
+      },
+      {
+        "id": "ee1a1a45-46ad-4460-ad2e-5b850542d78b",
+        "kind": "markdown",
+        "markdown": "| Gate | Accountable approval | Required evidence |\n|---|---|---|\n| G0 Intended use / risk | Integrator + EHS + welding authority | Hazard log, risk assessment, safety requirements, response matrix, isolation/maintenance and responsibility allocation |\n| G1 Cell + WPS | Integrator + welding engineer | Surveyed frames/TCP with independent witness, fixed rail station assurance, fixture, approved WPS and proven source mapping |\n| G2 Exact program | Authorized engineering reviewer | Confirm joint side, calibration, coverage, corrections, swept clearance, native artifact validation, signed immutable release |\n| G3 Local run | Local operator + controller/PLC | Staged identity/readback, fresh setup, matching part and station, process permissives, validated protective controls, deliberate local start |\n| G4 Physical / quality | Integrator + welding engineer + quality + site owner | Arc-inhibited dry run, HIL fault proofs, coupons and first article meeting governing code, SAT and signed envelope |",
+        "hash": "695d0d239895f92611e581360380f4658109c63e8b6da7e0a6fe016ade4d04be",
+        "metadata": {}
+      },
+      {
+        "id": "174e53e2-2193-4cda-9d6d-d7b0a2b4bae6",
+        "kind": "markdown",
+        "markdown": "Independent safety PLC/controller owns protective stops, guarding, E-stop, monitored limits and restart behavior per risk assessment. UI collision visualization and ordinary camera/heartbeat are not personnel-protection functions. No desktop remote start; reset only restores eligibility. Faults after ignition enter indeterminate/disposition until reconciled; no automatic retry of an uncertain weld. Preserve completed/suspect/untouched segments; quality approves repairs. Include arc light, extraction, fire, electrical, laser, pneumatic, track, dress pack and clamp hazards. Validate worst-case stopping and safeguarding through integrator.",
+        "hash": "b570c4bd52c91bbc33556a386c41d4b4a303c4f3f3cc26e3643db883cbe06d2e",
+        "metadata": {}
+      },
+      {
+        "id": "9a41ecaa-d414-4275-a3ae-44f93dcafe57",
+        "kind": "markdown",
+        "markdown": "Standards applicability follows source §9: Saudi SASO machinery requirements; ISO 12100, ISO 10218-1/-2, ISO 13849-1 or IEC 62061, IEC 60204-1, IEC 60825-1 where relevant, ISO 15609-1/15614-1/14732 or AWS D1.1 where contractually applicable, IEC 62443 and NIST SP 800-82. Site specialists must confirm editions, conformity route, code and required PL/SIL; no compliance claim here. Maintain clause-to-test traceability.",
+        "hash": "638f413bd91d3718b52a432363ada9ef72e4686cca2aefb990507922d809ab4e",
+        "metadata": {}
+      },
+      {
+        "id": "ac17895f-68d6-47c4-a684-9039a550b7a1",
+        "kind": "markdown",
+        "markdown": "## 8. Living milestone checklist",
+        "hash": "bee988329528fee60a872cffa95b60b9cef7fbb69fd94c2ea821ab9ef349131b",
+        "metadata": {}
+      },
+      {
+        "id": "80f37216-384b-4beb-9cf6-868ffd815668",
+        "kind": "markdown",
+        "markdown": "- [ ] M00 — Intended use, exact tuple, responsible integrator, risk register and evidence plan approved (P0/G0)",
+        "hash": "3ef7a14d3bb76dd6572a7f670bd7347ea0ce31783874f5b68175e520de7736da",
+        "metadata": {}
+      },
+      {
+        "id": "7fddef93-69ff-4689-b5d1-f62627e51562",
+        "kind": "markdown",
+        "markdown": "- [ ] M01 — v1 contracts and native Windows/macOS CI builds verified (Sprint 1)",
+        "hash": "c92c25485e460dd975e89d7b0246490a6c905c2ca2cfe40d67b6cde29de01f3a",
+        "metadata": {}
+      },
+      {
+        "id": "604573e8-6ab4-4d45-a553-0f5ab60d30b9",
+        "kind": "markdown",
+        "markdown": "- [ ] M02 — STEP import and selection golden corpus passes both OSs (P1)",
+        "hash": "f79ef7d23411e4e2afac91b8f3e008216de3746a0fed8094695aecc233cc2184",
+        "metadata": {}
+      },
+      {
+        "id": "b7a4b277-5469-4179-b686-4eb221463bb0",
+        "kind": "markdown",
+        "markdown": "- [ ] M03 — Straight T-joint candidate and side/direction tests pass (P2)",
+        "hash": "f7d1917feb263d323dfaeb0a20734a10fc7f3c69b0ac0cc936006d78d6904d58",
+        "metadata": {}
+      },
+      {
+        "id": "ecb2c9cc-eb26-4083-8f7e-e3fce111808f",
+        "kind": "markdown",
+        "markdown": "- [ ] M04 — WPS validation and approved machine schedule mapping proven (P3)",
+        "hash": "cc36e6ef4d23e5fdb5e264c9ce08c6d84ed82e74f0eda587b8dc39cdfeaa28b4",
+        "metadata": {}
+      },
+      {
+        "id": "4e722c74-7518-4c36-8853-811140531c79",
+        "kind": "markdown",
+        "markdown": "- [ ] M05 — Nominal path and continuous IK/clearance tests pass (P4)",
+        "hash": "d4fa30420a0820ddec4673e7ea811a01cd0d50181a781bd0d94bcaf3bd504bf0",
+        "metadata": {}
+      },
+      {
+        "id": "982036a1-576b-4fbd-996b-229187e70414",
+        "kind": "markdown",
+        "markdown": "- [ ] M06 — Replay registration, rejection and uncertainty tests pass (P5)",
+        "hash": "3b4435010abd6182780ee4ba65f84a96b0a62663ef4765bdb07a825d155c62be",
+        "metadata": {}
+      },
+      {
+        "id": "9cce32f0-dee2-40b9-82cc-ae823e375c94",
+        "kind": "markdown",
+        "markdown": "- [ ] M07 — End-to-end offline accepted/rejected jobs demonstrated both OSs (simulation MVP)",
+        "hash": "a9294978f77b3cc2cfe5de4bbda2b581fb03e6adc95e391dd50e773adb34069c",
+        "metadata": {}
+      },
+      {
+        "id": "dff6ad40-eff2-4597-a0fe-c8759e2975a1",
+        "kind": "markdown",
+        "markdown": "- [ ] M08 — Exact RAPID artifact verified with matching RobotWare (P6/G2)",
+        "hash": "aecaecd394092c8578aadd9b176b9541a2b23b9226a3e51b7ec0048b8bfb4d0a",
+        "metadata": {}
+      },
+      {
+        "id": "11b866a6-f38d-4e4e-932a-8689d2e802f1",
+        "kind": "markdown",
+        "markdown": "- [ ] M09 — Scanner selected and independently calibrated; cell survey and WPS approved (G1)",
+        "hash": "34b80dfa7c32c43d6426703ea623ad482e490fe48d45b0c5e5c38cce56df40ac",
+        "metadata": {}
+      },
+      {
+        "id": "8df9935f-a72e-440a-82e6-26e5c7a2679b",
+        "kind": "markdown",
+        "markdown": "- [ ] M10 — Staging/readback and HIL fault suite witnessed (P7)",
+        "hash": "92d7df20f14e22a855681c3efa63e25f3c99f4ec304864ca3ae408d02fc9eaef",
+        "metadata": {}
+      },
+      {
+        "id": "604b40af-52bb-4152-92e9-78a4709f9fed",
+        "kind": "markdown",
+        "markdown": "- [ ] M11 — Safety controls and local start procedure commissioned (G3)",
+        "hash": "4a86a721d0d20f9d4a42285dcf32bbadd18d09ff7148cc129e74194954a50805",
+        "metadata": {}
+      },
+      {
+        "id": "35e94f09-9a8a-47fa-aa86-e0b22d66d01c",
+        "kind": "markdown",
+        "markdown": "- [ ] M12 — Arc-inhibited dry runs and coupon/first-article inspection accepted (G4)",
+        "hash": "1bb48b8adc9930199404b643bc3cfe36da5c7b1261265fc508265a6e03827b94",
+        "metadata": {}
+      },
+      {
+        "id": "cdcb83ec-a62b-4181-a1ad-c851bf5239c7",
+        "kind": "markdown",
+        "markdown": "- [ ] M13 — Signed SAT, training, backup/restore, rollback and production envelope (P8)",
+        "hash": "f54b6993275c75c59c0349c77ff1dab834040460f3c3f4922919650c9571e59e",
+        "metadata": {}
+      },
+      {
+        "id": "59d67735-dd70-4357-8906-98fc1bf0de51",
+        "kind": "markdown",
+        "markdown": "- [ ] M14 — Expansion feature separately prioritized and qualified (future)",
+        "hash": "8818ae7cd9c9cc2065865b48f179da6ddd17df340e037dbd43acab093177753f",
+        "metadata": {}
+      },
+      {
+        "id": "460b99d1-9acf-4afe-adc3-dd9fdaf591d3",
+        "kind": "markdown",
+        "markdown": "**Maintenance protocol:** at each PR/sprint review, update milestone status, owner, date, commit/build hash, test ID, evidence location, reviewer, limits and next blocker. Check a box only when its stated evidence is independently accepted. Reopen affected milestone on changed firmware, fixture, scanner, WPS, calibration, postprocessor or OS. Suggested issue states: Backlog / In progress / Review / Blocked / Evidence accepted; milestone checklist is a living page, not automatic telemetry.",
+        "hash": "01bbfb599d62ecf17c087a39c20c552d7242282c72d2b791648efa5a22293efe",
+        "metadata": {}
+      },
+      {
+        "id": "10c7da76-7f62-474f-8f32-45112156cc4f",
+        "kind": "markdown",
+        "markdown": "## 9. Open decisions and immediate blockers",
+        "hash": "85e4825dd8fa6bd927bc33e893d6aae17b1c9ec0b651dec19ac6999d69c35509",
+        "metadata": {}
+      },
+      {
+        "id": "931c97e3-8f72-4c04-87a6-97daf92f98b2",
+        "kind": "markdown",
+        "markdown": "| Decision / missing evidence | Owner | Effect |\n|---|---|---|\n| Exact IRC5 RobotWare/options, PC Interface entitlement, reference RAPID and I/O | Controls | Blocks real adapter/native qualification |\n| Actual R450 feeder, firmware, mode package and WPS machine binding | Welding + controls | Blocks arc-on |\n| Scanner SDK, steel finish coverage, working distance, ground truth | Vision/metrology | Blocks physical correction; replay can continue |\n| Track station assurance, TCP/frame witness, clamp/dress pack geometry | Integrator | Blocks motion release |\n| Signed quality, clearance and uncertainty limits; governing code | Quality + integrator | Blocks physical release |\n| OS version support, license review, approved OT network and backup objectives | IT/lead | Blocks installer/site acceptance |",
+        "hash": "b1fde52a1ebfb336195fd01e03eeff1b27be09aad32ca99f93cb618e9e247400",
+        "metadata": {}
+      },
+      {
+        "id": "4d53b4cd-98a6-4de5-b596-987e5df20f7f",
+        "kind": "markdown",
+        "markdown": "## 10. Source traceability and next review",
+        "hash": "74750817d1131d63e25e924c580353b4dd879b3fe7aaafe7c785ff4837dd1517",
+        "metadata": {}
+      },
+      {
+        "id": "9342b8ba-f8fe-421a-92d9-283298d7f313",
+        "kind": "markdown",
+        "markdown": "Architecture file §§ 5–8 support technology, contracts and hardware boundaries; §§ 9 and 12 support gates and tests; §§ 10–11 and 15 support sequencing and agent ownership. Recent product ambitions for multi-vendor robots, adaptive paths and monitoring remain roadmap items beyond the narrow pilot. Proposed additions here are the P0–P8 work breakdown, monorepo directories, ten-day sprint, issue IDs and checklist governance. These are engineering recommendations, not verified implementation facts. Start S1-01 and S1-02 before expanding modules. Review at sprint end with the technical lead and independent QA.",
+        "hash": "a11d56a4c5d9b76a9166c4214b580acc7d8f8a244167f8212629da22b74e2341",
+        "metadata": {}
+      }
+    ],
+    "page_id": "page_bf94c62c3c64819182ff675453efa595"
+  },
+  "view": "editing"
+}

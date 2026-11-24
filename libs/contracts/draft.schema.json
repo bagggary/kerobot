@@ -1,0 +1,13 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"urn:kerobot:offline-draft:v1",
+ "type":"object","additionalProperties":false,
+ "required":["schema_version","job_id","state","synthetic","release_eligible","units","joint_revision","wps_revision","points_m","tangent","side_normal","travel_speed_m_s","wire_feed_speed_m_s"],
+ "$defs":{"id":{"type":"string","pattern":"^[A-Za-z0-9_-]{1,80}$"},"vec3":{"type":"array","minItems":3,"maxItems":3,"items":{"type":"number"}}},
+ "properties":{
+  "schema_version":{"const":1},"job_id":{"$ref":"#/$defs/id"},"state":{"const":"draft"},"synthetic":{"const":true},"release_eligible":{"const":false},"units":{"const":"m"},
+  "joint_revision":{"$ref":"#/$defs/id"},"wps_revision":{"$ref":"#/$defs/id"},
+  "points_m":{"type":"array","minItems":2,"maxItems":10001,"items":{"$ref":"#/$defs/vec3"}},"tangent":{"$ref":"#/$defs/vec3"},"side_normal":{"$ref":"#/$defs/vec3"},
+  "travel_speed_m_s":{"type":"number","exclusiveMinimum":0,"maximum":0.02},"wire_feed_speed_m_s":{"type":"number","exclusiveMinimum":0,"maximum":0.5}
+ }
+}

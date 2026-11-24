@@ -1,0 +1,1 @@
+{"version":5,"configurePresets":[{"name":"offline","generator":"Ninja","binaryDir":"${sourceDir}/build/offline","cacheVariables":{"CMAKE_BUILD_TYPE":"Debug","BUILD_TESTING":"ON"}}],"buildPresets":[{"name":"offline","configurePreset":"offline"}],"testPresets":[{"name":"offline","configurePreset":"offline","output":{"outputOnFailure":true}}]}

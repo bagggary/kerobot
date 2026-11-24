@@ -1,0 +1,16 @@
+{
+  "retrieved_date": "2026-11-24",
+  "conversation_id": "6b059359-fb04-83ed-874f-9fc85f514799",
+  "roadmap_page_id": "page_bf94c62c3c64819182ff675453efa595",
+  "roadmap_url": "https://chatgpt.com/space/page_bf94c62c3c64819182ff675453efa595",
+  "files": {
+    "KERobot_Welding_Platform_Architecture.md": "5d18468058033ef2ebe316a4d00febed76b92f04bf065d52650cc467668016e8",
+    "MVP_Implementation_Roadmap.md": "0aeee6ce3f84498eeb57cea0a1551ba64cd66910eb612f60c270b085b2c82928",
+    "roadmap-page-snapshot.json": "e5dbaf42201c4140ee5bc81c23c911e43e52d67ef91d270d21e29aa93bd174fc"
+  },
+  "notes": [
+    "Architecture copied byte-for-byte from recovered original chat attachment.",
+    "Roadmap Markdown concatenates complete Page blocks in canonical order; raw snapshot preserves block hashes.",
+    "Current implementation ledger is separate; source snapshots are unchanged."
+  ]
+}

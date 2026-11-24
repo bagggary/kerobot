@@ -1,0 +1,5 @@
+build/
+*.sqlite*
+*.tmp
+.DS_Store
+__pycache__/

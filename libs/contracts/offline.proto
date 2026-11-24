@@ -1,0 +1,15 @@
+syntax = "proto3";
+package kerobot.v1;
+// Proposed wire contract. Generated bindings/RPC transport are not implemented.
+message Vec3 { double x = 1; double y = 2; double z = 3; }
+message Quaternion { double x = 1; double y = 2; double z = 3; double w = 4; }
+// Right handed. T_A_B maps coordinates in B into A. Translation in metres.
+message FrameTransform { string parent_a = 1; string child_b = 2; Vec3 translation_m = 3; Quaternion rotation_xyzw = 4; }
+message ArtifactRef { string revision_id = 1; string sha256 = 2; string builder_version = 3; }
+message PartRevision { ArtifactRef source = 1; string declared_units = 2; }
+message JointIntent { string revision_id = 1; Vec3 start_m = 2; Vec3 end_m = 3; int32 side = 4; bool operator_confirmed = 5; }
+message TestWpsRevision { string revision_id = 1; string status = 2; double travel_speed_m_s = 3; double wire_feed_speed_m_s = 4; }
+message PlanRevision { ArtifactRef artifact = 1; string joint_revision = 2; string wps_revision = 3; repeated Vec3 points_m = 4; }
+message CapabilityManifest { string adapter = 1; bool synthetic = 2; bool supports_motion = 3; bool supports_arc = 4; }
+message JobDraft { string job_id = 1; string idempotency_key = 2; PlanRevision plan = 3; }
+// No start, stage or release RPC is exposed by Sprint 01.
