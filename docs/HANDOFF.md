@@ -17,3 +17,9 @@ Next concrete work: acquire sanitized representative STEP/drawing fixture; perfo
 Cloud continuation must first verify repository access and fetch the actual main revision. A created cloud chat is not evidence of a checked-out repository or a running coding environment. The original chat remains in place; use this durable context and source documents rather than claiming it was moved. No cell credentials belong in this repository or any coding agent.
 
 ChatGPT cloud continuation was created and read back as active: https://chatgpt.com/c/6b05a2a8-d034-83eb-b150-58341d92e596 (initial title “New chat”). Its prompt contains repository/source IDs, implementation commit f0d63586b0de488bc5dace8a9a9003a299d4d6eb, evidence and next steps. At handoff verification, only the submitted prompt was visible; no repository checkout, tool execution or coding session was established by that evidence. Always fetch latest main, including the CI runner fix.
+
+## Cloud continuation evidence
+
+The Linux execution workspace verified both baseline commit objects, reproduced the root tree and source manifest, and ran the offline tests. This branch adds a standalone C++ XDE inspection probe, synthetic TC-01 STEP and dimensioned drawing, analytic oracle, and separately recorded platform/license spike. Read [the test report](TEST_REPORT.md), [worker instructions](../workers/cad/README.md) and [Sprint 01 ledger](SPRINT_01.md) for the current evidence. The original chat remains at its existing ID.
+
+Next review the target-OS jobs for this branch and have CAD/QA check TC-01 independently. Obtain a rights-cleared representative drawing/STEP pair. Then extend the reviewed corpus to reflection, external references and exporter/healing cases before building face selection and joining it to seam intent. Physical release stays disabled.

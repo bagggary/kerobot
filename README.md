@@ -35,8 +35,9 @@ python tests/test_offline.py build/kerobot_offline
 | Test WPS, mock refusal, draft persistence | Implemented and locally tested; no approved WPS/edge service |
 | JSON schema and Protobuf | JSON tested; Protobuf proposed, not generated |
 | Windows/macOS CI | Configured; results must be checked per revision |
-| Qt status shell | Scaffold; build optional with `-DKEROBOT_BUILD_DESKTOP=ON`; unverified |
-| OCCT STEP import and face picking | Pending |
+| Qt status shell | Builds and starts offscreen on Linux; interactive workstation validation pending |
+| Standalone OCCT XDE probe | Tested on Linux with a synthetic AP242 assembly; reports occurrence transforms and bounds. [Run the probe](workers/cad/README.md) |
+| CAD viewport and face picking | Pending |
 | Torch orientation, IK, collision, scan replay | Pending |
 | RAPID/native verification, scanner, controller | Pending; hardware disabled |
 

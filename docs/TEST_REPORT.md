@@ -21,3 +21,21 @@ Reproduce with README commands. Windows and macOS GitHub Actions are configured;
 ## CI follow-up
 
 Implementation commit f0d63586b0de488bc5dace8a9a9003a299d4d6eb: Windows configure/build/CTest/JSON integration passed in [run 45417361723](https://github.com/bagggary/kerobot/actions/runs/45417361723). The macos-14 job was cancelled for unsupported runner configuration. A redundant initial workflow had the same retired image problem. Follow-up consolidates to ci.yml, selects macos-15 and updates actions to Node 24 versions. GitHub's [official runner image table](https://github.com/actions/runner-images/blob/main/README.md) documents retirement of macOS 14 and supported macOS 15 labels. Follow-up run must pass before claiming both hosted platforms.
+
+The follow-up [run 45417726321](https://github.com/bagggary/kerobot/actions/runs/45417726321) passed on both target OSs at `2eb2533` for the default targets. See [the recorded jobs](CI_EVIDENCE.json).
+
+## Cloud continuation on Debian 13 x86-64
+
+Baseline `f0d63586b0de488bc5dace8a9a9003a299d4d6eb` was reconstructed from verified Git objects in a running Linux workspace. Parent `7c018e8b0c23f2e937ee2333de4e443762844ab0`, root tree `6ed1395b792aa07dcc13c8374bfacf9367de3290` and all three preserved SHA-256 source hashes matched. A clean default build reproduced 16 C++ cases, 2 CTest checks and 4 Python integration cases.
+
+GitHub's push job records on this baseline showed Windows passing in both workflows, Ubuntu passing in the foundation workflow, and both macOS 14 jobs cancelled before steps ran. Both overall runs concluded cancelled. GitHub retired the macOS 14 Actions image on 2 November 2026. [Foundation CI](https://github.com/bagggary/kerobot/actions/runs/45417361723) · [Native jobs](https://github.com/bagggary/kerobot/actions/runs/45417361741) · [Runner retirement](https://github.com/actions/runner-images/issues/13518)
+
+The continuation tree containing this section was built clean with GCC 14.2, CMake 4.4.5, Qt 6.8.2 and OCCT 7.8.1. Both optional targets compiled. The Qt status process remained alive with the offscreen plugin until the two-second smoke harness terminated it. No visual inspection or viewport test was performed.
+
+| Check | Result on the continuation tree |
+|---|---|
+| C++ case runner and existing draft integration | 16/16 C++ and 4/4 Python passed |
+| CTest with both optional targets enabled | 3/3 passed; includes STEP process suite |
+| STEP suite run directly | 8/8 passed. Drawing-derived dimensions, shared definitions, paths, nested rotation/translation, hash and SI output. Refused missing, malformed, truncated, oversize, unsupported-unit, mixed-unit and missing-length inputs. |
+
+These results apply to the synthetic fixture and the tested Linux build. Independent technical/QA review, customer drawing reconciliation, all industrial acceptance gates and the M00–M14 milestones remain open.
