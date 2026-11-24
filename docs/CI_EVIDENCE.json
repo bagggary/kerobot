@@ -1,0 +1,184 @@
+{
+  "verified_date": "2026-11-24",
+  "repository": "https://github.com/bagggary/kerobot",
+  "tested_commit": "2eb2533ef78cbed5436e01fb82c722908bcf900a",
+  "run_url": "https://github.com/bagggary/kerobot/actions/runs/45417726321",
+  "jobs": [
+    {
+      "id": 138528424202,
+      "name": "offline (macos-15)",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 45417726321,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run python -m pip install -r requirements-test.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run cmake -S . -B build -DBUILD_TESTING=ON",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Run cmake --build build --config Debug",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Run ctest --test-dir build -C Debug --output-on-failure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "JSON integration on macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "JSON integration on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9
+        },
+        {
+          "name": "Post Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        }
+      ]
+    },
+    {
+      "id": 138528424512,
+      "name": "offline (windows-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 45417726321,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run python -m pip install -r requirements-test.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run cmake -S . -B build -DBUILD_TESTING=ON",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Run cmake --build build --config Debug",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Run ctest --test-dir build -C Debug --output-on-failure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "JSON integration on macOS",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8
+        },
+        {
+          "name": "JSON integration on Windows",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Post Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        }
+      ]
+    }
+  ],
+  "local": {
+    "platform": "macOS 14.5 arm64",
+    "cpp_cases_passed": 16,
+    "ctest_checks_passed": 2,
+    "json_integration_tests_passed": 4
+  },
+  "limits": [
+    "Default offline targets only; Qt/OCCT not built",
+    "Synthetic fixture; no STEP import or weld-joint detection",
+    "No IK/collision/native verification/scanner/controller execution",
+    "No original industrial milestone accepted"
+  ]
+}

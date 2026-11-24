@@ -18,6 +18,12 @@ The integration suite parses actual CLI output and persisted JSON, validates dra
 
 Reproduce with README commands. Windows and macOS GitHub Actions are configured; do not infer their results from local execution. Qt shell, Protobuf compilation, OCCT/STEP, signed installers, detector, torch orientation, IK/clearance, vision, native verification, HIL and physical welding were not tested or implemented by this increment. Passing software tests does not close original M00–M14.
 
+## CI follow-up
+
+Implementation commit f0d63586b0de488bc5dace8a9a9003a299d4d6eb: Windows configure/build/CTest/JSON integration passed in [run 45417361723](https://github.com/bagggary/kerobot/actions/runs/45417361723). The macos-14 job was cancelled for unsupported runner configuration. A redundant initial workflow had the same retired image problem. Follow-up consolidates to ci.yml, selects macos-15 and updates actions to Node 24 versions. GitHub's [official runner image table](https://github.com/actions/runner-images/blob/main/README.md) documents retirement of macOS 14 and supported macOS 15 labels. Follow-up run must pass before claiming both hosted platforms.
+
+The follow-up [run 45417726321](https://github.com/bagggary/kerobot/actions/runs/45417726321) passed on both target OSs at `2eb2533` for the default targets. See [the recorded jobs](CI_EVIDENCE.json).
+
 ## Cloud continuation on Debian 13 x86-64
 
 Baseline `f0d63586b0de488bc5dace8a9a9003a299d4d6eb` was reconstructed from verified Git objects in a running Linux workspace. Parent `7c018e8b0c23f2e937ee2333de4e443762844ab0`, root tree `6ed1395b792aa07dcc13c8374bfacf9367de3290` and all three preserved SHA-256 source hashes matched. A clean default build reproduced 16 C++ cases, 2 CTest checks and 4 Python integration cases.

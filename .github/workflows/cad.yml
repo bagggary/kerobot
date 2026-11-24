@@ -1,0 +1,53 @@
+name: Offline CAD and draft tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  cad:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2022, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          activate-environment: kerobot-cad
+          python-version: '3.12'
+          channels: conda-forge
+          channel-priority: strict
+      - name: Install development dependencies
+        shell: bash -el {0}
+        run: |
+          conda install --yes 'occt=7.8.1=novtk_*' 'qt6-main=6.8.2'
+          python -m pip install -r requirements-test.txt
+      - name: Build optional targets and run drawing and draft tests
+        shell: bash -el {0}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          import platform
+          import subprocess
+          import sys
+
+          print(platform.platform(), platform.machine(), sys.version, flush=True)
+          windows = os.name == "nt"
+          prefix = Path(sys.prefix) / "Library" if windows else Path(sys.prefix)
+          subprocess.run([
+              "cmake", "-S", ".", "-B", "build", f"-DCMAKE_PREFIX_PATH={prefix}",
+              f"-DPython3_EXECUTABLE={sys.executable}", "-DBUILD_TESTING=ON",
+              "-DCMAKE_BUILD_TYPE=Release", "-DKEROBOT_BUILD_DESKTOP=ON",
+              "-DKEROBOT_BUILD_STEP_PROBE=ON",
+          ], check=True)
+          subprocess.run(["cmake", "--build", "build", "--config", "Release"], check=True)
+          subprocess.run(["ctest", "--test-dir", "build", "-C", "Release", "--output-on-failure"], check=True)
+          cli = "build/Release/kerobot_offline.exe" if windows else "build/kerobot_offline"
+          subprocess.run([sys.executable, "tests/test_offline.py", cli], check=True)
+          PY

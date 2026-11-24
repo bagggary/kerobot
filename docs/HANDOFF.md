@@ -10,11 +10,13 @@ User request: create a new private KERobot GitHub repository; preserve original 
 
 The earlier chat claimed a development handoff but explicitly left repository and cloud verification pending. This work creates actual repository/code evidence; do not repeat its unverified completion claims.
 
-At the original implementation commit, the implemented subset is dependency-free C++20 synthetic X-line sampling, explicit confirmation/side/direction, test-only WPS, local persisted drafts and mock refusal. Optional Qt shell and Protobuf are scaffold. At that revision no STEP import, detector, robot IK/collision twin, scanner, approved WPS, native exporter or live integration exists yet. Original milestones remain unaccepted.
+Read docs/SPRINT_01.md and TEST_REPORT.md. Implemented subset is dependency-free C++20 synthetic X-line sampling, explicit confirmation/side/direction, test-only WPS, local persisted drafts and mock refusal. Optional Qt shell and Protobuf are scaffold. No STEP import, detector, robot IK/collision twin, scanner, approved WPS, native exporter or live integration exists yet. Original milestones remain unaccepted.
 
-The baseline handoff called for this work: acquire sanitized representative STEP/drawing fixture; perform Qt/OCCT version/license/platform spike; implement isolated STEP/XDE importer with unit/occurrence diagnostics and analytic independently checked corpus; add viewport and face selection; retain all physical release blocks. Keep hardware disconnected.
+Next concrete work: acquire sanitized representative STEP/drawing fixture; perform Qt/OCCT version/license/platform spike; implement isolated STEP/XDE importer with unit/occurrence diagnostics and analytic independently checked corpus; add viewport and face selection; retain all physical release blocks. Keep hardware disconnected.
 
-The handoff required the continuation to verify repository access and fetch the actual main revision. A created cloud chat is not evidence of a checked-out repository or a running coding environment. The original chat remains in place; use this durable context and source documents rather than claiming it was moved. No cell credentials belong in this repository or any coding agent.
+Cloud continuation must first verify repository access and fetch the actual main revision. A created cloud chat is not evidence of a checked-out repository or a running coding environment. The original chat remains in place; use this durable context and source documents rather than claiming it was moved. No cell credentials belong in this repository or any coding agent.
+
+ChatGPT cloud continuation was created and read back as active: https://chatgpt.com/c/6b05a2a8-d034-83eb-b150-58341d92e596 (initial title “New chat”). Its prompt contains repository/source IDs, implementation commit f0d63586b0de488bc5dace8a9a9003a299d4d6eb, evidence and next steps. At handoff verification, only the submitted prompt was visible; no repository checkout, tool execution or coding session was established by that evidence. Always fetch latest main, including the CI runner fix.
 
 ## Cloud continuation evidence
 
