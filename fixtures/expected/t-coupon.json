@@ -1,0 +1,9 @@
+{
+  "drawing": "TC-01 rev A",
+  "root_count": 1,
+  "occurrences": [
+    {"part": "base", "depth": 2, "min_mm": [0, 0, 0], "max_mm": [100, 60, 8], "datum_mm": [0, 0, 0], "rotation_diagonal": [1, 1, 1]},
+    {"part": "web", "depth": 3, "min_mm": [10, 12, 8], "max_mm": [50, 16, 28], "datum_mm": [10, 12, 8], "rotation_diagonal": [1, 1, 1]},
+    {"part": "web", "depth": 3, "min_mm": [40, 38, 8], "max_mm": [80, 42, 28], "datum_mm": [80, 42, 8], "rotation_diagonal": [-1, -1, 1]}
+  ]
+}

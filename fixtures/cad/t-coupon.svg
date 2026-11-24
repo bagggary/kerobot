@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">TC-01 synthetic T-coupon, revision A</title>
+  <desc id="desc">Top and front views of one base and two upright webs. All dimensions in millimetres. World origin is the lower left front of the base.</desc>
+  <rect width="800" height="450" fill="white"/>
+  <g font-family="sans-serif" fill="#162534">
+    <text x="32" y="35" font-size="22">TC-01 · Synthetic T-coupon</text>
+    <text x="32" y="59" font-size="14">Revision A   |   Dimensions in mm   |   Orthographic views   |   Offline test geometry</text>
+    <text x="58" y="94" font-size="16">Top · looking down Z</text>
+    <text x="58" y="301" font-size="16">Front · looking along +Y</text>
+    <g stroke="#263648" stroke-width="1.5">
+      <rect x="58" y="108" width="250" height="150" fill="#e8edf0"/>
+      <rect x="83" y="218" width="100" height="10" fill="#408aaa"/>
+      <rect x="158" y="153" width="100" height="10" fill="#408aaa"/>
+      <rect x="58" y="370" width="250" height="20" fill="#e8edf0"/>
+      <rect x="83" y="320" width="100" height="50" fill="#408aaa"/>
+      <path d="M183 320 H258 V370 H183" fill="#70a6bc"/>
+    </g>
+    <g font-size="13">
+      <text x="90" y="213">Web A</text><text x="177" y="147">Web B</text>
+      <text x="56" y="278">(0,0)</text><text x="266" y="278">+X</text><text x="27" y="122">+Y</text>
+      <text x="58" y="410">Z = 0 at underside</text><text x="316" y="375">8</text><text x="316" y="327">28</text>
+    </g>
+    <g font-size="16">
+      <text x="372" y="105">Base · 100 × 60 × 8</text>
+      <text x="372" y="132">Lower corner (0, 0, 0)</text>
+      <text x="372" y="184">Web · 40 × 4 × 20 · quantity 2</text>
+      <text x="372" y="211">Both stand on the top face at Z = 8.</text>
+      <text x="372" y="253">A datum (10, 12, 8)</text>
+      <text x="372" y="280">Local X, Y follow world +X, +Y.</text>
+      <text x="372" y="324">B datum (80, 42, 8)</text>
+      <text x="372" y="351">Local X, Y follow world −X, −Y.</text>
+      <text x="372" y="400">Each web extends +20 along world Z.</text>
+    </g>
+  </g>
+</svg>
