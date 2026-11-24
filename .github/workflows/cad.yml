@@ -42,6 +42,7 @@ jobs:
           prefix = Path(sys.prefix) / "Library" if windows else Path(sys.prefix)
           subprocess.run([
               "cmake", "-S", ".", "-B", "build", f"-DCMAKE_PREFIX_PATH={prefix}",
+              f"-DQT_HOST_PATH={prefix}",
               f"-DPython3_EXECUTABLE={sys.executable}", "-DBUILD_TESTING=ON",
               "-DCMAKE_BUILD_TYPE=Release", "-DKEROBOT_BUILD_DESKTOP=ON",
               "-DKEROBOT_BUILD_STEP_PROBE=ON",
